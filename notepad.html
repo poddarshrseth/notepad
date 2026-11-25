@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My WordPad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <h1>My WordPad</h1>
+        
+<div class="top-actions">
+    <button onclick="newDocument()">New</button>
+    <button onclick="importDocument()">Import</button>
+    <button onclick="saveDocument()">Save</button>
+    <button onclick="exportHTML()">Export HTML</button>
+    <button onclick="exportTXT()">Export TXT</button>
+</div>
+
+    </header>
+
+    <main class="container">
+
+        <section class="document-info">
+            <input type="text" id="docName"
+                   placeholder="Document name"
+                   value="Untitled Document">
+            <span id="saveStatus">Ready</span>
+        </section>
+
+        <section class="toolbar">
+
+            <div class="tool-group">
+                <select id="fontFamily" onchange="changeFont()">
+                    <option value="Arial">Arial</option>
+                    <option value="Calibri">Calibri</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Courier New">Courier New</option>
+                </select>
+
+                <select id="fontSize" onchange="changeSize()">
+                    <option value="1">10</option>
+                    <option value="2">13</option>
+                    <option value="3" selected>16</option>
+                    <option value="4">18</option>
+                    <option value="5">24</option>
+                    <option value="6">32</option>
+                    <option value="7">48</option>
+                </select>
+            </div>
+
+            <div class="tool-group">
+                <button onclick="format('bold')"><b>B</b></button>
+                <button onclick="format('italic')"><i>I</i></button>
+                <button onclick="format('underline')"><u>U</u></button>
+                <button onclick="format('strikeThrough')"><s>S</s></button>
+            </div>
+
+            <div class="tool-group">
+                <label class="color-tool">
+                    Text
+                    <input type="color" id="textColor"
+                           onchange="changeColor()">
+                </label>
+
+                <label class="color-tool">
+                    Highlight
+                    <input type="color" id="highlightColor"
+                           value="#ffff00"
+                           onchange="changeHighlight()">
+                </label>
+            </div>
+
+            <div class="tool-group">
+                <button onclick="format('justifyLeft')">Left</button>
+                <button onclick="format('justifyCenter')">Center</button>
+                <button onclick="format('justifyRight')">Right</button>
+                <button onclick="format('justifyFull')">Justify</button>
+            </div>
+
+            <div class="tool-group">
+                <button onclick="format('insertUnorderedList')">• List</button>
+                <button onclick="format('insertOrderedList')">1. List</button>
+            </div>
+
+            <div class="tool-group">
+                <button onclick="format('undo')">↶</button>
+                <button onclick="format('redo')">↷</button>
+            </div>
+
+            <div class="tool-group">
+                <select id="heading" onchange="changeHeading()">
+                    <option value="p">Paragraph</option>
+                    <option value="h1">Heading 1</option>
+                    <option value="h2">Heading 2</option>
+                    <option value="h3">Heading 3</option>
+                    <option value="blockquote">Quote</option>
+                </select>
+            </div>
+
+            <div class="tool-group">
+                <button onclick="insertLink()">Link</button>
+                <button onclick="insertTable()">Table</button>
+                <button onclick="insertImage()">Image</button>
+                <button onclick="format('insertHorizontalRule')">Line</button>
+            </div>
+
+        </section>
+
+        <section class="editor-section">
+            <div id="editor" contenteditable="true"
+                 spellcheck="true">
+            </div>
+        </section>
+
+        <footer class="footer">
+            <span id="wordCount">0 words</span>
+            <span id="charCount">0 characters</span>
+            <span>Autosave enabled</span>
+        </footer>
+
+        <section class="documents">
+            <h3>My Documents</h3>
+            <div id="documentList"></div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
